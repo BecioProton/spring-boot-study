@@ -18,24 +18,26 @@
     * roduction-ready features like monitoring, logging, and metrics via Actuator.
     * Microservices support with built-in tools for cloud deployment.
     * Reduced boilerplate code, making development faster and more efficient.
-3. What is the purpose of the @SpringBootApplication annotation?
+3. What is the purpose of the `@SpringBootApplication` annotation?
 
-@SpringBootApplication is a convenience annotation that combines three important annotations:
+    @SpringBootApplication is a convenience annotation that combines three important annotations:
 
-@SpringBootConfiguration  // Marks the class as a configuration class
-@EnableAutoConfiguration  // Enables Spring Boot’s auto-configuration feature
-@ComponentScan            // Scans for Spring components in the package
+        @SpringBootConfiguration  // Marks the class as a configuration class
+        @EnableAutoConfiguration  // Enables Spring Boot’s auto-configuration feature
+        @ComponentScan            // Scans for Spring components in the package
 
-This annotation marks the main entry point of a Spring Boot application.
+    This annotation marks the main entry point of a Spring Boot application.
 
-Example:
+    Example:
 
-@SpringBootApplication
-public class MyApp {
-    public static void main(String[] args) {
-        SpringApplication.run(MyApp.class, args);
+    ```
+    @SpringBootApplication
+    public class MyApp {
+        public static void main(String[] args) {
+            SpringApplication.run(MyApp.class, args);
+        }
     }
-}
+    ```
 
 4. What is auto-configuration in Spring Boot, and how does it work?
 
