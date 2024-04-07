@@ -1,24 +1,25 @@
 🔹 Basic Spring Boot Questions
 
-   1. What is Spring Boot, and how is it different from the Spring Framework?
+1.  What is Spring Boot, and how is it different from the Spring Framework?
 
-            Spring Boot is an extension of the Spring Framework designed to simplify the development of Spring-based applications. It eliminates the need for extensive XML configuration and enables rapid application development by providing auto-configuration, embedded servers, and dependency management.
+          Spring Boot is an extension of the Spring Framework designed to simplify the development of Spring-based applications. It eliminates the need for extensive XML configuration and enables rapid application development by providing auto-configuration, embedded servers, and dependency management.
 
-        🔹 Key Differences:
+    🔹 Key Differences:
 
-        * Spring Framework requires manual configuration, whereas Spring Boot provides auto-configuration.
-        * Spring Boot includes an embedded server (Tomcat, Jetty, etc.), while Spring Framework needs an external setup.
-        * Spring Boot provides opinionated defaults, whereas Spring Framework is flexible but requires more setup.
+    - Spring Framework requires manual configuration, whereas Spring Boot provides auto-configuration.
+    - Spring Boot includes an embedded server (Tomcat, Jetty, etc.), while Spring Framework needs an external setup.
+    - Spring Boot provides opinionated defaults, whereas Spring Framework is flexible but requires more setup.
 
-2. What are the advantages of using Spring Boot?
+2.  What are the advantages of using Spring Boot?
 
-    * Auto-configuration reduces manual configuration.
-    * Embedded servers (Tomcat, Jetty) eliminate the need for external application servers.
-    * Simplified dependency management through Spring Boot Starters.
-    * roduction-ready features like monitoring, logging, and metrics via Actuator.
-    * Microservices support with built-in tools for cloud deployment.
-    * Reduced boilerplate code, making development faster and more efficient.
-3. What is the purpose of the `@SpringBootApplication` annotation?
+    - Auto-configuration reduces manual configuration.
+    - Embedded servers (Tomcat, Jetty) eliminate the need for external application servers.
+    - Simplified dependency management through Spring Boot Starters.
+    - roduction-ready features like monitoring, logging, and metrics via Actuator.
+    - Microservices support with built-in tools for cloud deployment.
+    - Reduced boilerplate code, making development faster and more efficient.
+
+3.  What is the purpose of the `@SpringBootApplication` annotation?
 
     @SpringBootApplication is a convenience annotation that combines three important annotations:
 
@@ -39,153 +40,160 @@
     }
     ```
 
-4. What is auto-configuration in Spring Boot, and how does it work?
+4.  What is auto-configuration in Spring Boot, and how does it work?
 
-Auto-configuration is a feature that automatically configures Spring Beans based on the dependencies present in the classpath.
+        Auto-configuration is a feature that automatically configures Spring Beans based on the dependencies present in the classpath.
 
-📌 How it works:
+    How it works:
 
-    Spring Boot scans the classpath for dependencies (e.g., if spring-boot-starter-data-jpa is present, Hibernate and JPA will be auto-configured).
-    It applies sensible default configurations.
-    Developers can override configurations using properties in application.properties or by defining custom beans.
+        Spring Boot scans the classpath for dependencies (e.g., if spring-boot-starter-data-jpa is present, Hibernate and JPA will be auto-configured).
+        It applies sensible default configurations.
+        Developers can override configurations using properties in application.properties or by defining custom beans.
 
-Example: If you add Spring Data JPA, Spring Boot auto-configures a DataSource and EntityManager without manual setup.
+    Example: If you add Spring Data JPA, Spring Boot auto-configures a DataSource and EntityManager without manual setup. 
+    
 5. How does Spring Boot simplify dependency management?
 
-Spring Boot uses Spring Boot Starters to manage dependencies efficiently.
+    Spring Boot uses Spring Boot Starters to manage dependencies efficiently.
 
-🔹 Key Features:
+    🔹 Key Features:
 
     It provides predefined dependency sets (spring-boot-starter-web, spring-boot-starter-data-jpa, etc.).
     It manages compatible dependency versions automatically.
     It uses Bill of Materials (BOM) to maintain version consistency.
 
-Example (pom.xml):
+    Example (pom.xml):
+    ```
+    <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-web</artifactId>
+    </dependency>
+    ```
 
-<dependency>
-    <groupId>org.springframework.boot</groupId>
-    <artifactId>spring-boot-starter-web</artifactId>
-</dependency>
-
-Here, Spring Boot automatically resolves all necessary dependencies like Spring MVC and an embedded Tomcat server.
+    Here, Spring Boot automatically resolves all necessary dependencies like Spring MVC and an embedded Tomcat server. 
 6. What is a Spring Boot starter, and can you name some commonly used starters?
 
-A Spring Boot Starter is a dependency that includes all the required libraries to simplify configuration.
+        A Spring Boot Starter is a dependency that includes all the required libraries to simplify configuration.
 
-📌 Common Spring Boot Starters:
-Starter	Description
-spring-boot-starter-web	For building web applications (Spring MVC + Tomcat)
-spring-boot-starter-data-jpa	For working with JPA and Hibernate
-spring-boot-starter-security	For implementing security and authentication
-spring-boot-starter-test	For unit and integration testing
-spring-boot-starter-actuator	For monitoring and application health checks
-spring-boot-starter-thymeleaf	For integrating Thymeleaf templates
-spring-boot-starter-mail	For sending emails with JavaMailSender
+    Common Spring Boot Starters:
+    * Starter Description
+    * spring-boot-starter-web For building web applications (Spring MVC + Tomcat)
+    * spring-boot-starter-data-jpa For working with JPA and Hibernate
+    * spring-boot-starter-security For implementing security and authentication
+    * spring-boot-starter-test For unit and integration testing
+    * spring-boot-starter-actuator For monitoring and application health checks
+    * spring-boot-starter-thymeleaf For integrating Thymeleaf templates
+    * spring-boot-starter-mail For sending emails with JavaMailSender
 
-Spring Boot starters reduce configuration complexity by bundling commonly used dependencies.
+    Spring Boot starters reduce configuration complexity by bundling commonly used dependencies. 
+
 7. How does Spring Boot handle dependency injection?
 
-Spring Boot uses Spring's Dependency Injection (DI) mechanism to manage bean dependencies.
+    Spring Boot uses Spring's Dependency Injection (DI) mechanism to manage bean dependencies.
 
-📌 Key Features:
+    📌 Key Features:
 
-    Automatically injects dependencies using @Autowired.
-    Uses IoC (Inversion of Control) to manage object lifecycles.
-    Supports constructor injection, setter injection, and field injection.
-    Allows explicit bean definitions via @Bean methods.
+        Automatically injects dependencies using @Autowired.
+        Uses IoC (Inversion of Control) to manage object lifecycles.
+        Supports constructor injection, setter injection, and field injection.
+        Allows explicit bean definitions via @Bean methods.
 
-Example (Constructor Injection):
+    Example (Constructor Injection):
 
-@Service
-public class UserService {
+    @Service
+    public class UserService {
     private final UserRepository userRepository;
 
-    @Autowired
-    public UserService(UserRepository userRepository) {
-        this.userRepository = userRepository;
-    }
-}
+        @Autowired
+        public UserService(UserRepository userRepository) {
+            this.userRepository = userRepository;
+        }
 
-Here, UserService automatically receives an instance of UserRepository.
+    }
+
+    Here, UserService automatically receives an instance of UserRepository. 
 8. What is the difference between @Component, @Service, and @Repository annotations?
 
-All three annotations are used for defining Spring Beans, but they have different purposes:
-Annotation	Purpose
-@Component	Generic annotation for Spring-managed beans
-@Service	Specialized for service layer components (business logic)
-@Repository	Specialized for DAO (Data Access Objects) and database interactions
+    All three annotations are used for defining Spring Beans, but they have different purposes:
+    Annotation Purpose
+    @Component Generic annotation for Spring-managed beans
+    @Service Specialized for service layer components (business logic)
+    @Repository Specialized for DAO (Data Access Objects) and database interactions
 
-Example:
+    Example:
 
-@Component
-public class GeneralComponent { }  // Generic bean
+    @Component
+    public class GeneralComponent { } // Generic bean
 
-@Service
-public class MyService { }  // Business logic
+    @Service
+    public class MyService { } // Business logic
 
-@Repository
-public class MyRepository { }  // Database interaction
+    @Repository
+    public class MyRepository { } // Database interaction
 
-Although they behave similarly, @Service and @Repository provide additional metadata for service logic and exception handling.
+    Although they behave similarly, @Service and @Repository provide additional metadata for service logic and exception handling. 
+
 9. What is the purpose of the @Autowired annotation, and how does it work?
 
-@Autowired is used for automatic dependency injection in Spring Boot.
+    @Autowired is used for automatic dependency injection in Spring Boot.
 
-📌 How it works:
+    How it works:
 
-    Spring scans for a matching bean and injects it automatically.
-    Works with constructor injection (recommended), field injection, and setter injection.
-    If multiple beans match, Spring throws an exception unless a qualifier (@Qualifier) or @Primary is specified.
+        Spring scans for a matching bean and injects it automatically.
+        Works with constructor injection (recommended), field injection, and setter injection.
+        If multiple beans match, Spring throws an exception unless a qualifier (@Qualifier) or @Primary is specified.
 
-Example (Field Injection):
+    Example (Field Injection):
 
-@Service
-public class UserService {
+    @Service
+    public class UserService {
     @Autowired
     private UserRepository userRepository;
-}
+    }
 
-Example (Constructor Injection - Preferred):
+    Example (Constructor Injection - Preferred):
 
-@Service
-public class UserService {
+    @Service
+    public class UserService {
     private final UserRepository userRepository;
 
-    @Autowired
-    public UserService(UserRepository userRepository) {
-        this.userRepository = userRepository;
-    }
-}
+        @Autowired
+        public UserService(UserRepository userRepository) {
+            this.userRepository = userRepository;
+        }
 
-Using constructor injection is preferred because it ensures immutability and testability.
+    }
+
+    Using constructor injection is preferred because it ensures immutability and testability. 
 10. What are the different ways to define beans in Spring Boot?
 
-Spring Boot provides multiple ways to define beans:
+    Spring Boot provides multiple ways to define beans:
 
-1️⃣ Using @Component, @Service, or @Repository (Auto-Scanning)
+    1️⃣ Using @Component, @Service, or @Repository (Auto-Scanning)
+    ```
+        @Component
+        public class MyComponent { }
+    ```
 
-@Component
-public class MyComponent { }
+    2️⃣ Using @Bean in a Configuration Class
+    ```
+        @Configuration
+        public class AppConfig {
+            @Bean
+            public MyComponent myComponent() {
+                return new MyComponent();
+            }
+        }
+    ```
+    3️⃣ Using XML Configuration (Rarely Used in Spring Boot)
 
-2️⃣ Using @Bean in a Configuration Class
+    <bean id="myComponent" class="com.example.MyComponent"/>
 
-@Configuration
-public class AppConfig {
-    @Bean
-    public MyComponent myComponent() {
-        return new MyComponent();
-    }
-}
-
-3️⃣ Using XML Configuration (Rarely Used in Spring Boot)
-
-<bean id="myComponent" class="com.example.MyComponent"/>
-
-Spring Boot prefers annotation-based bean definition for simplicity and better maintainability.
+    Spring Boot prefers annotation-based bean definition for simplicity and better maintainability.
 
 🔹 Intermediate Spring Boot Questions
 
-   1. How does Spring Boot handle application properties and configuration?
+1.  How does Spring Boot handle application properties and configuration?
 
 Spring Boot handles application properties and configuration by using a set of default configuration settings that can be easily overridden in the application.properties or application.yml files. These files can contain properties to configure beans, server settings, logging, etc. Spring Boot automatically loads these files from the classpath (usually in src/main/resources).
 
@@ -212,8 +220,7 @@ application.yml (YAML) is a hierarchical structure (supports nesting).
       datasource:
         url: jdbc:mysql://localhost:3306/mydb
 
-YAML is generally more readable and better suited for complex configurations, while properties files are simpler and more familiar to many developers.
-3. How do you create custom properties in Spring Boot and access them?
+YAML is generally more readable and better suited for complex configurations, while properties files are simpler and more familiar to many developers. 3. How do you create custom properties in Spring Boot and access them?
 
 To create custom properties in Spring Boot:
 
@@ -236,12 +243,11 @@ Using @ConfigurationProperties (more robust for grouping related properties):
         public class CustomProperties {
             private String property1;
             private String property2;
-            
+
             // getters and setters
         }
 
-For @ConfigurationProperties, make sure to enable it in the main class by using @EnableConfigurationProperties if not automatically enabled.
-4. What is the difference between @Value and @ConfigurationProperties?
+For @ConfigurationProperties, make sure to enable it in the main class by using @EnableConfigurationProperties if not automatically enabled. 4. What is the difference between @Value and @ConfigurationProperties?
 
     @Value: Used for injecting individual property values into fields.
 
@@ -261,8 +267,7 @@ Use case: Injecting single values, typically for simple configuration properties
 
     Use case: Grouping related properties and providing them as a strongly-typed object.
 
-@ConfigurationProperties is more scalable and useful when you have a complex or large set of properties, while @Value is for simpler cases.
-5. What is the purpose of the @Bean annotation in Spring Boot?
+@ConfigurationProperties is more scalable and useful when you have a complex or large set of properties, while @Value is for simpler cases. 5. What is the purpose of the @Bean annotation in Spring Boot?
 
 The @Bean annotation is used to define bean methods within a @Configuration class. It tells Spring that the method should be executed and its return value should be registered as a Spring Bean in the application context.
 
@@ -270,14 +275,13 @@ Example:
 
 @Configuration
 public class AppConfig {
-    @Bean
-    public MyService myService() {
-        return new MyServiceImpl();
-    }
+@Bean
+public MyService myService() {
+return new MyServiceImpl();
+}
 }
 
-Purpose: To define and configure beans manually (typically when the bean creation requires some custom logic).
-6. What is the use of @Qualifier, and when should you use it?
+Purpose: To define and configure beans manually (typically when the bean creation requires some custom logic). 6. What is the use of @Qualifier, and when should you use it?
 
 @Qualifier is used to resolve ambiguity when there are multiple beans of the same type and Spring needs to know which one to inject. It is typically used alongside @Autowired.
 
@@ -287,8 +291,7 @@ Example:
 @Qualifier("mySpecificService")
 private Service myService;
 
-When to use: When there are multiple candidates for injection, @Qualifier helps identify which one should be injected.
-7. What are the different types of dependency injection supported by Spring Boot?
+When to use: When there are multiple candidates for injection, @Qualifier helps identify which one should be injected. 7. What are the different types of dependency injection supported by Spring Boot?
 
 Spring Boot supports three types of dependency injection:
 
@@ -325,8 +328,7 @@ Some useful endpoints provided by Spring Boot Actuator include:
     /actuator/metrics - Application metrics like memory usage, active threads, etc.
     /actuator/env - Properties and environment details
 
-How it helps: It simplifies the process of monitoring Spring Boot applications in production by providing easily accessible information about system health and performance.
-9. What is the role of CommandLineRunner and ApplicationRunner in Spring Boot?
+How it helps: It simplifies the process of monitoring Spring Boot applications in production by providing easily accessible information about system health and performance. 9. What is the role of CommandLineRunner and ApplicationRunner in Spring Boot?
 
 Both CommandLineRunner and ApplicationRunner are functional interfaces that allow you to execute code after the Spring Boot application has started.
 
@@ -336,10 +338,10 @@ Both CommandLineRunner and ApplicationRunner are functional interfaces that allo
 
 @Component
 public class MyCommandLineRunner implements CommandLineRunner {
-    @Override
-    public void run(String... args) throws Exception {
-        // Your code here
-    }
+@Override
+public void run(String... args) throws Exception {
+// Your code here
+}
 }
 
 ApplicationRunner:
@@ -354,8 +356,7 @@ ApplicationRunner:
         }
     }
 
-Both are typically used for running tasks at startup.
-10. How do you enable and use profiles in Spring Boot?
+Both are typically used for running tasks at startup. 10. How do you enable and use profiles in Spring Boot?
 
 In Spring Boot, profiles allow you to define environment-specific configurations (e.g., development, production).
 
@@ -391,8 +392,7 @@ Spring Boot will automatically pick the correct properties based on the active p
 
     It provides a convenient and concise way to enable auto-configuration, component scanning, and the configuration of beans in a Spring Boot application.
 
-In short, @SpringBootApplication includes @EnableAutoConfiguration but adds more functionality, such as component scanning and configuration.
-2. How does Spring Boot determine which beans to autoconfigure?
+In short, @SpringBootApplication includes @EnableAutoConfiguration but adds more functionality, such as component scanning and configuration. 2. How does Spring Boot determine which beans to autoconfigure?
 
 Spring Boot uses Auto Configuration to automatically configure beans based on the dependencies found in the classpath. Here's how it works:
 
@@ -408,17 +408,16 @@ Example using @EnableAutoConfiguration:
 
 @EnableAutoConfiguration(exclude = DataSourceAutoConfiguration.class)
 public class MyApp {
-    public static void main(String[] args) {
-        SpringApplication.run(MyApp.class, args);
-    }
+public static void main(String[] args) {
+SpringApplication.run(MyApp.class, args);
+}
 }
 
 Example using application.properties:
 
 spring.autoconfigure.exclude=org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration
 
-This will exclude the DataSourceAutoConfiguration from being applied, which can be useful if you don’t need a database in your application.
-4. What is the purpose of the spring.factories file?
+This will exclude the DataSourceAutoConfiguration from being applied, which can be useful if you don’t need a database in your application. 4. What is the purpose of the spring.factories file?
 
 The spring.factories file is part of the Spring Boot ServiceLoader mechanism and is used for auto-configuration and loading custom configurations in a Spring Boot application. It defines a list of classes or configuration beans that Spring Boot can use.
 
@@ -430,8 +429,7 @@ Example:
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
 com.example.MyCustomAutoConfiguration
 
-Spring Boot will automatically load the MyCustomAutoConfiguration class as part of its auto-configuration mechanism.
-5. What is the ApplicationContext, and how does it work in Spring Boot?
+Spring Boot will automatically load the MyCustomAutoConfiguration class as part of its auto-configuration mechanism. 5. What is the ApplicationContext, and how does it work in Spring Boot?
 
 The ApplicationContext is the central interface to the Spring Framework's Inversion of Control (IoC) container. It manages beans and their lifecycle in a Spring application. Spring Boot creates an ApplicationContext during application startup and provides it to manage the beans.
 
@@ -468,11 +466,10 @@ Example:
 @Bean
 @ConditionalOnProperty(name = "myapp.featureEnabled", havingValue = "true")
 public MyFeatureService myFeatureService() {
-    return new MyFeatureServiceImpl();
+return new MyFeatureServiceImpl();
 }
 
-When to use it: Use this annotation when you want to enable/disable beans or configurations based on the presence and value of a property. For example, enabling certain features only when a specific configuration property is set.
-8. How do you implement and register a custom Spring Boot Starter?
+When to use it: Use this annotation when you want to enable/disable beans or configurations based on the presence and value of a property. For example, enabling certain features only when a specific configuration property is set. 8. How do you implement and register a custom Spring Boot Starter?
 
 A custom Spring Boot Starter is a reusable, self-contained module that can encapsulate common configuration and dependencies for a specific use case.
 
@@ -525,9 +522,9 @@ How it helps: It significantly improves the development speed by providing fast 
 
 1. What is the difference between @Controller and @RestController?
 
-    @Controller: This is a generic annotation used to define a controller in a Spring MVC application. It is typically used for handling web pages and rendering views (using technologies like Thymeleaf or JSP). Methods in a class annotated with @Controller return views (HTML, JSP, etc.) by default, unless @ResponseBody is used to return data directly.
+   @Controller: This is a generic annotation used to define a controller in a Spring MVC application. It is typically used for handling web pages and rendering views (using technologies like Thymeleaf or JSP). Methods in a class annotated with @Controller return views (HTML, JSP, etc.) by default, unless @ResponseBody is used to return data directly.
 
-    @RestController: This is a convenience annotation that combines @Controller and @ResponseBody. It is used to define RESTful web services where the methods return JSON or XML data directly (without views). Every method in a class annotated with @RestController automatically assumes the @ResponseBody behavior, meaning that the return values are serialized directly into HTTP responses.
+   @RestController: This is a convenience annotation that combines @Controller and @ResponseBody. It is used to define RESTful web services where the methods return JSON or XML data directly (without views). Every method in a class annotated with @RestController automatically assumes the @ResponseBody behavior, meaning that the return values are serialized directly into HTTP responses.
 
 2. How do you handle exceptions in a Spring Boot REST API?
 
@@ -537,11 +534,11 @@ In Spring Boot, you can handle exceptions globally or locally:
 
 @ControllerAdvice
 public class GlobalExceptionHandler {
-    @ExceptionHandler(ResourceNotFoundException.class)
-    public ResponseEntity<ErrorResponse> handleNotFound(ResourceNotFoundException ex) {
-        ErrorResponse errorResponse = new ErrorResponse("Resource not found", ex.getMessage());
-        return new ResponseEntity<>(errorResponse, HttpStatus.NOT_FOUND);
-    }
+@ExceptionHandler(ResourceNotFoundException.class)
+public ResponseEntity<ErrorResponse> handleNotFound(ResourceNotFoundException ex) {
+ErrorResponse errorResponse = new ErrorResponse("Resource not found", ex.getMessage());
+return new ResponseEntity<>(errorResponse, HttpStatus.NOT_FOUND);
+}
 }
 
 Local Exception Handling: Handle exceptions in individual controllers using @ExceptionHandler.
@@ -564,18 +561,18 @@ Local Exception Handling: Handle exceptions in individual controllers using @Exc
 
 3. What is @RequestMapping, and how is it different from @GetMapping and @PostMapping?
 
-    @RequestMapping: It is a general-purpose annotation used to map HTTP requests to handler methods of MVC and REST controllers. It supports all HTTP methods (GET, POST, PUT, DELETE, etc.).
+   @RequestMapping: It is a general-purpose annotation used to map HTTP requests to handler methods of MVC and REST controllers. It supports all HTTP methods (GET, POST, PUT, DELETE, etc.).
 
 @RequestMapping("/resource")
 public String getResource() {
-    return "Resource";
+return "Resource";
 }
 
 @GetMapping: A specialized version of @RequestMapping for HTTP GET requests. It is used to handle GET requests specifically.
 
 @GetMapping("/resource")
 public String getResource() {
-    return "Resource";
+return "Resource";
 }
 
 @PostMapping: A specialized version of @RequestMapping for HTTP POST requests. It is used to handle POST requests specifically.
@@ -587,11 +584,11 @@ public String getResource() {
 
 4. How do you pass request parameters using @RequestParam vs. @PathVariable?
 
-    @RequestParam: This is used to retrieve query parameters from the URL. For example, you can use @RequestParam to extract parameters from the query string.
+   @RequestParam: This is used to retrieve query parameters from the URL. For example, you can use @RequestParam to extract parameters from the query string.
 
 @GetMapping("/greet")
 public String greet(@RequestParam String name) {
-    return "Hello, " + name;
+return "Hello, " + name;
 }
 // URL: /greet?name=John
 
@@ -611,13 +608,13 @@ CORS can be enabled globally or locally:
 
 @Configuration
 public class WebConfig implements WebMvcConfigurer {
-    @Override
-    public void addCorsMappings(CorsRegistry registry) {
-        registry.addMapping("/**")
-                .allowedOrigins("http://localhost:3000")  // Allow CORS from specific origin
-                .allowedMethods("GET", "POST", "PUT", "DELETE")
-                .allowedHeaders("*");
-    }
+@Override
+public void addCorsMappings(CorsRegistry registry) {
+registry.addMapping("/\*_")
+.allowedOrigins("http://localhost:3000") // Allow CORS from specific origin
+.allowedMethods("GET", "POST", "PUT", "DELETE")
+.allowedHeaders("_");
+}
 }
 
 Locally: You can also enable CORS for specific controller methods using @CrossOrigin:
@@ -664,8 +661,7 @@ java -jar myapp.jar --server.port=8081
         }
     }
 
-In the case of @RestController, @ResponseBody is automatically applied to all methods.
-8. How do you handle file uploads in Spring Boot?
+In the case of @RestController, @ResponseBody is automatically applied to all methods. 8. How do you handle file uploads in Spring Boot?
 
 To handle file uploads in Spring Boot:
 
@@ -714,10 +710,10 @@ Interceptors allow you to pre-process and post-process HTTP requests in a Spring
 
 @RestControllerAdvice
 public class GlobalExceptionHandler {
-    @ExceptionHandler(ResourceNotFoundException.class)
-    public ResponseEntity<String> handleNotFound(ResourceNotFoundException ex) {
-        return new ResponseEntity<>(ex.getMessage(), HttpStatus.NOT_FOUND);
-    }
+@ExceptionHandler(ResourceNotFoundException.class)
+public ResponseEntity<String> handleNotFound(ResourceNotFoundException ex) {
+return new ResponseEntity<>(ex.getMessage(), HttpStatus.NOT_FOUND);
+}
 }
 
 @ExceptionHandler: This is used within controllers or @ControllerAdvice to handle specific exceptions at the controller level. It is applied to individual methods to handle exceptions that occur within that controller.
@@ -755,15 +751,15 @@ The @Entity annotation is used to mark a class as a JPA entity, which means the 
 
 @Entity
 public class Product {
-    @Id
-    private Long id;
-    private String name;
-    private double price;
+@Id
+private Long id;
+private String name;
+private double price;
 }
 
 3. What is the difference between @OneToOne, @OneToMany, and @ManyToMany in JPA?
 
-    @OneToOne: Establishes a one-to-one relationship between two entities. Each instance of one entity is associated with exactly one instance of the other.
+   @OneToOne: Establishes a one-to-one relationship between two entities. Each instance of one entity is associated with exactly one instance of the other.
 
 @OneToOne
 private Address address;
@@ -781,9 +777,9 @@ private List<Order> orders;
 
 4. How does Spring Boot handle database migrations with Flyway and Liquibase?
 
-    Flyway: Flyway is a database migration tool that allows you to version control your database schema. In Spring Boot, you can configure Flyway by adding the Flyway dependency to your pom.xml and placing migration scripts in the src/main/resources/db/migration folder. Flyway will automatically run these scripts at application startup.
+   Flyway: Flyway is a database migration tool that allows you to version control your database schema. In Spring Boot, you can configure Flyway by adding the Flyway dependency to your pom.xml and placing migration scripts in the src/main/resources/db/migration folder. Flyway will automatically run these scripts at application startup.
 
-    Example Maven dependency:
+   Example Maven dependency:
 
 <dependency>
     <groupId>org.flywaydb</groupId>
@@ -801,11 +797,11 @@ Example Maven dependency:
 
 5. What is the difference between CrudRepository, JpaRepository, and PagingAndSortingRepository?
 
-    CrudRepository: This is the simplest repository that provides CRUD (Create, Read, Update, Delete) operations for an entity. It provides methods like save(), findById(), delete(), etc.
+   CrudRepository: This is the simplest repository that provides CRUD (Create, Read, Update, Delete) operations for an entity. It provides methods like save(), findById(), delete(), etc.
 
-    JpaRepository: Extends CrudRepository and adds additional JPA-specific operations, like batch operations (flush()), pagination (findAll(Pageable pageable)), and sorting (findAll(Sort sort)).
+   JpaRepository: Extends CrudRepository and adds additional JPA-specific operations, like batch operations (flush()), pagination (findAll(Pageable pageable)), and sorting (findAll(Sort sort)).
 
-    PagingAndSortingRepository: Extends CrudRepository and provides additional functionality for pagination and sorting, but it does not include JPA-specific methods.
+   PagingAndSortingRepository: Extends CrudRepository and provides additional functionality for pagination and sorting, but it does not include JPA-specific methods.
 
 In summary:
 
@@ -821,7 +817,7 @@ Spring Boot supports caching via the @Cacheable, @CachePut, and @CacheEvict anno
 
 @Cacheable("products")
 public Product getProduct(Long id) {
-    return productRepository.findById(id).orElse(null);
+return productRepository.findById(id).orElse(null);
 }
 
 @CachePut: Used to update the cache with a new value every time the method is called, regardless of whether the method has been invoked before.
@@ -833,8 +829,7 @@ public Product getProduct(Long id) {
         productRepository.deleteById(id);
     }
 
-To enable caching in Spring Boot, you can add @EnableCaching to your configuration class.
-7. What is lazy loading vs. eager loading in Hibernate?
+To enable caching in Spring Boot, you can add @EnableCaching to your configuration class. 7. What is lazy loading vs. eager loading in Hibernate?
 
     Lazy Loading: In lazy loading, related entities are not loaded until they are explicitly accessed. This is the default behavior for most associations in JPA (@OneToMany, @ManyToMany).
 
@@ -858,8 +853,7 @@ The @Transactional annotation is used to manage transactions declaratively. It e
         to.deposit(amount);
     }
 
-If any exception occurs in the method, the transaction will be rolled back by default. You can customize this behavior using attributes like rollbackFor, noRollbackFor, etc.
-9. How does Spring Boot support NoSQL databases like MongoDB and Redis?
+If any exception occurs in the method, the transaction will be rolled back by default. You can customize this behavior using attributes like rollbackFor, noRollbackFor, etc. 9. How does Spring Boot support NoSQL databases like MongoDB and Redis?
 
     MongoDB: Spring Boot integrates with MongoDB using the spring-boot-starter-data-mongodb dependency. It automatically configures the MongoTemplate and MongoRepository for MongoDB operations.
 
@@ -890,7 +884,7 @@ Pessimistic Locking: Pessimistic locking assumes that conflicts will happen, and
 
 @Lock(LockModeType.PESSIMISTIC_WRITE)
 public void lockResource(Long id) {
-    // perform locked operation
+// perform locked operation
 }
 
 🔹 Spring Boot Security Questions
@@ -904,16 +898,16 @@ Example of a basic Spring Boot security configuration:
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
-    @Override
-    protected void configure(HttpSecurity http) throws Exception {
-        http
-            .authorizeRequests()
-            .antMatchers("/admin/**").hasRole("ADMIN")
-            .anyRequest().authenticated()
-            .and()
-            .formLogin()
-            .permitAll();
-    }
+@Override
+protected void configure(HttpSecurity http) throws Exception {
+http
+.authorizeRequests()
+.antMatchers("/admin/\*\*").hasRole("ADMIN")
+.anyRequest().authenticated()
+.and()
+.formLogin()
+.permitAll();
+}
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
@@ -922,21 +916,22 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
             .and()
             .withUser("admin").password("{noop}admin").roles("ADMIN");
     }
+
 }
 
 2. What is the difference between authentication and authorization?
 
-    Authentication: The process of verifying the identity of a user or system. Authentication ensures that the entity is who it claims to be, usually through credentials such as a username and password, tokens, or biometric data.
+   Authentication: The process of verifying the identity of a user or system. Authentication ensures that the entity is who it claims to be, usually through credentials such as a username and password, tokens, or biometric data.
 
-    Authorization: The process of granting access to resources or actions based on the authenticated entity's permissions. After authentication, authorization determines whether the authenticated entity is allowed to access a particular resource or perform a specific action.
+   Authorization: The process of granting access to resources or actions based on the authenticated entity's permissions. After authentication, authorization determines whether the authenticated entity is allowed to access a particular resource or perform a specific action.
 
 3. What is the purpose of @PreAuthorize and @PostAuthorize?
 
-    @PreAuthorize: This annotation allows method-level security by enforcing authorization checks before a method is executed. It is used to specify authorization rules based on a user's roles, permissions, or other attributes.
+   @PreAuthorize: This annotation allows method-level security by enforcing authorization checks before a method is executed. It is used to specify authorization rules based on a user's roles, permissions, or other attributes.
 
 @PreAuthorize("hasRole('ADMIN')")
 public void deleteUser(Long userId) {
-    // method logic
+// method logic
 }
 
 @PostAuthorize: This annotation allows method-level security by enforcing authorization checks after a method has executed. It's typically used when the return value of the method needs to be checked for authorization.
@@ -961,8 +956,8 @@ Example steps:
 
 @Component
 public class JwtFilter extends OncePerRequestFilter {
-    @Autowired
-    private JwtUtil jwtUtil;
+@Autowired
+private JwtUtil jwtUtil;
 
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
@@ -982,6 +977,7 @@ public class JwtFilter extends OncePerRequestFilter {
         }
         return null;
     }
+
 }
 
 JWT Utility (Generate, Validate):
@@ -1031,8 +1027,7 @@ spring.security.oauth2.client.registration.google.client-secret=your-client-secr
 spring.security.oauth2.client.registration.google.scope=profile,email
 spring.security.oauth2.client.registration.google.redirect-uri={baseUrl}/login/oauth2/code/{registrationId}
 
-You can then use @EnableOAuth2Sso to automatically configure single sign-on or use @AuthenticationPrincipal to access the authenticated user.
-6. What is CSRF protection, and how does Spring Security handle it?
+You can then use @EnableOAuth2Sso to automatically configure single sign-on or use @AuthenticationPrincipal to access the authenticated user. 6. What is CSRF protection, and how does Spring Security handle it?
 
     CSRF (Cross-Site Request Forgery) is an attack where a malicious user tricked into performing an unintended action in a web application where they are authenticated.
     Spring Security provides built-in CSRF protection, which prevents these attacks by requiring that requests (especially state-modifying requests like POST, PUT, DELETE) include a special CSRF token, typically as a hidden field or a header.
@@ -1050,8 +1045,7 @@ Method-level security is enabled by annotating your Spring Boot application with
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 }
 
-After enabling it, you can use annotations like @PreAuthorize, @PostAuthorize, @Secured, and @RolesAllowed.
-8. What is the difference between UserDetailsService and AuthenticationProvider?
+After enabling it, you can use annotations like @PreAuthorize, @PostAuthorize, @Secured, and @RolesAllowed. 8. What is the difference between UserDetailsService and AuthenticationProvider?
 
     UserDetailsService: This is an interface that is responsible for retrieving user-related data. It has a method loadUserByUsername() that loads a user by their username and returns a UserDetails object containing user information like username, password, roles, etc.
 
@@ -1066,8 +1060,7 @@ To implement MFA:
     After successful authentication, generate a QR code or OTP (One-Time Password) for the second factor.
     Validate the OTP entered by the user.
 
-You can integrate the second factor by using Spring Security's custom filters or a service like Authy or Twilio.
-10. How can you secure REST APIs using API keys or tokens?
+You can integrate the second factor by using Spring Security's custom filters or a service like Authy or Twilio. 10. How can you secure REST APIs using API keys or tokens?
 
 To secure REST APIs with API keys or tokens:
 
@@ -1077,7 +1070,7 @@ To secure REST APIs with API keys or tokens:
 Example API Key filter:
 
 public class ApiKeyFilter extends OncePerRequestFilter {
-    private static final String API_KEY = "your-api-key";
+private static final String API_KEY = "your-api-key";
 
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
@@ -1088,6 +1081,7 @@ public class ApiKeyFilter extends OncePerRequestFilter {
             response.sendError(HttpServletResponse.SC_UNAUTHORIZED, "Invalid API Key");
         }
     }
+
 }
 
 🔹 Spring Boot Performance & Best Practices
@@ -1112,8 +1106,7 @@ logging.level.org.springframework.web=DEBUG
 logging.level.com.yourcompany=TRACE
 logging.file.name=logs/myapp.log
 
-To customize further, you can define a logback-spring.xml file to configure log patterns, appenders, and log levels.
-3. How do you enable asynchronous processing in Spring Boot?
+To customize further, you can define a logback-spring.xml file to configure log patterns, appenders, and log levels. 3. How do you enable asynchronous processing in Spring Boot?
 
 To enable asynchronous processing in Spring Boot:
 
@@ -1129,14 +1122,13 @@ public class AsyncConfig {
 
 @Service
 public class MyService {
-    @Async
-    public void asyncMethod() {
-        // This method runs in a separate thread
-    }
+@Async
+public void asyncMethod() {
+// This method runs in a separate thread
+}
 }
 
-Make sure that you have a thread pool configured (Spring Boot uses a default one, but you can customize it if needed).
-4. What are the best practices for writing scalable and maintainable Spring Boot applications?
+Make sure that you have a thread pool configured (Spring Boot uses a default one, but you can customize it if needed). 4. What are the best practices for writing scalable and maintainable Spring Boot applications?
 
 Best practices include:
 
@@ -1178,12 +1170,12 @@ You can implement it using Spring Cloud Circuit Breaker and Resilience4J:
 
 @CircuitBreaker(name = "myService", fallbackMethod = "fallbackMethod")
 public String callExternalService() {
-    // Call external service
-    return "response";
+// Call external service
+return "response";
 }
 
 public String fallbackMethod(Throwable throwable) {
-    return "fallback response";
+return "fallback response";
 }
 
 7. How does Spring Boot handle rate limiting?
@@ -1193,11 +1185,11 @@ Spring Boot does not include built-in rate-limiting, but you can implement rate 
 Example with Resilience4J:
 
 resilience4j.ratelimiter:
-  instances:
-    apiRateLimiter:
-      limitForPeriod: 100
-      limitRefreshPeriod: 1s
-      timeoutDuration: 500ms
+instances:
+apiRateLimiter:
+limitForPeriod: 100
+limitRefreshPeriod: 1s
+timeoutDuration: 500ms
 
 8. How can you configure a connection pool in Spring Boot?
 
@@ -1213,8 +1205,7 @@ spring.datasource.hikari.minimum-idle=10
 spring.datasource.hikari.idle-timeout=30000
 spring.datasource.hikari.max-lifetime=600000
 
-For a different connection pool, such as Apache DBCP2 or C3P0, you would add the relevant dependency and configure it similarly.
-9. What are some common memory management issues in Spring Boot applications?
+For a different connection pool, such as Apache DBCP2 or C3P0, you would add the relevant dependency and configure it similarly. 9. What are some common memory management issues in Spring Boot applications?
 
 Common memory management issues in Spring Boot include:
 
