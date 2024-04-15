@@ -2,13 +2,13 @@
 
    1. What is Spring Boot, and how is it different from the Spring Framework?
 
-Spring Boot is an extension of the Spring Framework designed to simplify the development of Spring-based applications. It eliminates the need for extensive XML configuration and enables rapid application development by providing auto-configuration, embedded servers, and dependency management.
+            Spring Boot is an extension of the Spring Framework designed to simplify the development of Spring-based applications. It eliminates the need for extensive XML configuration and enables rapid application development by providing auto-configuration, embedded servers, and dependency management.
 
-🔹 Key Differences:
+        🔹 Key Differences:
 
-    Spring Framework requires manual configuration, whereas Spring Boot provides auto-configuration.
-    Spring Boot includes an embedded server (Tomcat, Jetty, etc.), while Spring Framework needs an external setup.
-    Spring Boot provides opinionated defaults, whereas Spring Framework is flexible but requires more setup.
+        * Spring Framework requires manual configuration, whereas Spring Boot provides auto-configuration.
+        * Spring Boot includes an embedded server (Tomcat, Jetty, etc.), while Spring Framework needs an external setup.
+        * Spring Boot provides opinionated defaults, whereas Spring Framework is flexible but requires more setup.
 
 2. What are the advantages of using Spring Boot?
 
